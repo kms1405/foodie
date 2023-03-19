@@ -1,31 +1,15 @@
-/* body {
-    background-color: red;
-} */
-
-/* .container {
-    background-color: violet;
-*/
-
 .card{
     margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 10px;
 }
 
-
-/* .container #banner_row {
-    border-radius: 30px;
-} */
-
-.btn {
-    font-size: 16px;
-
+.nav_head {
+    font-size: xx-large;
+    font-weight: bolder;
 }
 
-/*
-
-.like-button:hover {
-    background-color: white;
-
-} */
+img {
+    border-radius: 10px;
+}
 

@@ -1,3 +1,5 @@
+
+// All meals details
 var meals = {
     1: {
         id: 1,
@@ -49,13 +51,15 @@ var meals = {
     },
 }
 
-function set_localstorage(event_id, values) {
 
+// To set local staorage value
+function set_localstorage(event_id, values) {
     return window.localStorage.setItem(event_id, values);
 
 }
 
 
+// To get local staorage value
 function get_localstorage(event_id) {
 
     return window.localStorage.getItem(event_id);
@@ -63,6 +67,7 @@ function get_localstorage(event_id) {
 }
 
 
+// To fetch favorite meal color
 function getBgColourUsingId(meal_id) {
     var local_value = get_localstorage(`l${meal_id}`);
 
@@ -79,12 +84,15 @@ function getBgColourUsingId(meal_id) {
 }
 
 
+
+// To view particular meal
 function viewProduct(event_id) {
+
     document.getElementById("meal_row").style.display = "none";
     document.getElementById("banner_row").style.display = "none";
     document.getElementById("meal_favorite").style.display = "none";
     var meal_row_div = document.getElementById("meal_desc");
-    meal_row_div.style.display="block";
+    meal_row_div.style.display = "block";
     var previous_element = meal_row_div.lastElementChild
 
     if (previous_element) {
@@ -100,8 +108,8 @@ function viewProduct(event_id) {
         <div class="card-body">
         <img class="card-img-top" src=${meals[event_id].image} style="width: 40rem; alt="Card image cap">
         <h5 class="card-title">About Meal</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a onclick={likeMeal(this.id)} id=l${event_id} class="btn btn-primary like-button" 
+        <p class="card-text">${meals[event_id].desc}</p>
+        <a onclick={descLikeMeal(this.id)} id=l${event_id} class="btn btn-primary" 
         style="background-color: ${getBgColourUsingId(event_id)}" value=${event_id} > Like</a>
         </div>
         </div>`;
@@ -113,9 +121,8 @@ function viewProduct(event_id) {
 }
 
 
-
+// To add favorite meal
 function likeMeal(event_id) {
-    console.log(event_id, "event id")
     var local_value = get_localstorage(event_id);
     bg_color = "pink"
     if (!local_value) {
@@ -132,19 +139,39 @@ function likeMeal(event_id) {
         }
 
     }
-
-    window.document.getElementById(event_id).style.background = bg_color;
+    var r = document.getElementById(event_id).style.background = bg_color;
 
 
 }
 
+
+// Add or Remove like from description page
+function descLikeMeal(event_id) {
+    likeMeal(event_id)
+
+    event_id = event_id.split("l")[1]
+
+    viewProduct(event_id)
+
+};
+
+// Add or Remove like from favorite meal page
+function favLikeMeal(event_id) {
+    likeMeal(event_id);
+    favoriteFood()
+};
 
 function favoriteFood() {
     document.getElementById("meal_row").style.display = "none";
     document.getElementById("banner_row").style.display = "none";
     document.getElementById("meal_desc").style.display = "none";
     var meal_row_div = document.getElementById("meal_favorite");
-    meal_row_div.style.display="flex";
+    meal_row_div.style.display = "flex";
+
+    while (meal_row_div.firstChild) {
+        meal_row_div.removeChild(meal_row_div.lastChild);
+    };
+
     for (meal in meals) {
         var value = window.localStorage.getItem(`l${meal}`);
         if (JSON.parse(value) === true) {
@@ -159,7 +186,7 @@ function favoriteFood() {
             <h5 class="card-title">${meals[meal].name}</h5>
     
             <a onclick={viewProduct(this.id)} id=${meal} class="btn btn-primary" value=${meal} >View desc</a>
-            <a onclick={likeMeal(this.id)} id=l${meal} class="btn btn-primary like-button${meal}"
+            <a onclick={favLikeMeal(this.id)} id=l${meal} class="btn btn-secondary"
              style = "background-color : ${getBgColourUsingId(meal)};" value=${meal} > Like</a>
         </div>`
                 ;
@@ -172,15 +199,14 @@ function favoriteFood() {
 }
 
 
-
-function dynamicSearchClick(){
-    var keyword=document.getElementById("dynamic_search_input").value;
+// To featch meals using search bar
+function dynamicSearchClick() {
+    var keyword = document.getElementById("dynamic_search_input").value;
     var search_element = document.getElementById("dynamic_search");
     search_element.style.display = "block";
-    console.log("dsfsdg")
     for (meal in meals) {
         var name = meals[meal].name.toLowerCase()
-        
+
         if (name.includes(keyword) == true && keyword.length > 0) {
             document.getElementById(`s${meal}`).style.display = "block";
         } else {
@@ -188,18 +214,19 @@ function dynamicSearchClick(){
         }
     }
 
-    
+
 }
 
-function searchViewProduct (event_id) {
+// To view product from search results
+function searchViewProduct(event_id) {
     event_id = event_id.split("s")[1]
     return viewProduct(event_id)
 }
 
 
 
-
-function construct_rows() {
+// This function will initilize all our elemts
+function initializeRows() {
 
     var meal_row_div = document.getElementById("meal_row");
     var search_element = document.getElementById("dynamic_search");
@@ -223,7 +250,8 @@ function construct_rows() {
 
         meal_row_div.appendChild(div);
 
-        search_div.innerHTML = `<div id=s${meal} onclick={searchViewProduct(this.id)} style="display : none" > <h3>${meals[meal].name}</h3>
+        search_div.innerHTML = `<div id=s${meal} 
+        onclick={searchViewProduct(this.id)} style="display : none;" > <h3>${meals[meal].name}</h3>
         <hr></div>`;
 
         search_element.appendChild(search_div);
@@ -231,11 +259,8 @@ function construct_rows() {
 
     }
 
-    // search_element.style.display = "none";
-
-
 }
 
 
 
-construct_rows();
+initializeRows();
