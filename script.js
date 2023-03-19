@@ -2,7 +2,7 @@ var meals = {
     1: {
         id: 1,
         name: "Chicken briyani",
-        image: "./images/briyani.jpeg",
+        image: "./images/chicken.webp",
         desc: "Very delicious checken briyani at affordable price",
         like: false
 
@@ -10,7 +10,7 @@ var meals = {
     2: {
         id: 2,
         name: "Mutton briyani",
-        image: "./images/briyani.jpeg",
+        image: "./images/muttonbriyani.jpg",
         desc: "Very delicious checken briyani at affordable price",
         like: false
 
@@ -18,7 +18,7 @@ var meals = {
     3: {
         id: 3,
         name: "Prawn briyani",
-        image: "./images/briyani.jpeg",
+        image: "./images/prawn.jpg",
         desc: "Very delicious checken briyani at affordable price",
         like: false
 
@@ -26,7 +26,7 @@ var meals = {
     4: {
         id: 4,
         name: "Idly",
-        image: "./images/briyani.jpeg",
+        image: "./images/idly.jpeg",
         desc: "Very delicious checken briyani at affordable price",
         like: false
 
@@ -34,7 +34,7 @@ var meals = {
     5: {
         id: 5,
         name: "Dosa",
-        image: "./images/briyani.jpeg",
+        image: "./images/dosa.jpg",
         desc: "Very delicious checken briyani at affordable price",
         like: false
 
@@ -42,7 +42,7 @@ var meals = {
     6: {
         id: 6,
         name: "Pongal",
-        image: "./images/briyani.jpeg",
+        image: "./images/pongalnew.jpg",
         desc: "Very delicious checken briyani at affordable price",
         like: false
 
@@ -70,13 +70,11 @@ function getBgColourUsingId(meal_id) {
         var color = "white";
 
     } else {
-        var color = JSON.parse(local_value) === true ? "#c02332" : "white";
+        var color = JSON.parse(local_value) === true ? "pink" : "white";
 
     }
 
     return color
-
-
 
 }
 
@@ -119,7 +117,7 @@ function viewProduct(event_id) {
 function likeMeal(event_id) {
     console.log(event_id, "event id")
     var local_value = get_localstorage(event_id);
-    bg_color = "#c02332"
+    bg_color = "pink"
     if (!local_value) {
         set_localstorage(event_id, true);
         window.document.getElementById(event_id).style.background = bg_color;
@@ -219,7 +217,7 @@ function construct_rows() {
             <h5 class="card-title">${meals[meal].name}</h5>
     
             <a onclick={viewProduct(this.id)} id=${meal} class="btn btn-primary" value=${meal} >View desc</a>
-            <a onclick={likeMeal(this.id)} id=l${meal} class="btn btn-seconday"
+            <a onclick={likeMeal(this.id)} id=l${meal} class="btn btn-secondary"
              style = "background-color : ${getBgColourUsingId(meal)};" value=${meal} > Like </a>
         </div>`;
 
