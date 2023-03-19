@@ -1,0 +1,32 @@
+/* body {
+    background-color: red;
+} */
+
+/* .container {
+    background-color: violet;
+*/
+
+.card{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+
+/* .container #banner_row {
+    border-radius: 30px;
+} */
+
+.btn-primary {
+    color: white;
+    font-size: 16px;
+
+}
+
+/*
+
+.like-button:hover {
+    background-color: white;
+
+} */
+
