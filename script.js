@@ -5,7 +5,7 @@ var meals = {
         id: 1,
         name: "Chicken briyani",
         image: "./images/chicken.webp",
-        desc: "Very delicious checken briyani at affordable price",
+        desc: "Very delicious chicken briyani at affordable price",
         like: false
 
     },
@@ -13,7 +13,7 @@ var meals = {
         id: 2,
         name: "Mutton briyani",
         image: "./images/muttonbriyani.jpg",
-        desc: "Very delicious checken briyani at affordable price",
+        desc: "Very delicious mutton briyani at affordable price",
         like: false
 
     },
@@ -21,7 +21,7 @@ var meals = {
         id: 3,
         name: "Prawn briyani",
         image: "./images/prawn.jpg",
-        desc: "Very delicious checken briyani at affordable price",
+        desc: "Very delicious prawn briyani at affordable price",
         like: false
 
     },
@@ -29,7 +29,7 @@ var meals = {
         id: 4,
         name: "Idly",
         image: "./images/idly.jpeg",
-        desc: "Very delicious checken briyani at affordable price",
+        desc: "Delicious soft idly",
         like: false
 
     },
@@ -37,7 +37,7 @@ var meals = {
         id: 5,
         name: "Dosa",
         image: "./images/dosa.jpg",
-        desc: "Very delicious checken briyani at affordable price",
+        desc: "Crispy plain delicious roast cooked with ghee served with chutney and sambhar.",
         like: false
 
     },
@@ -45,7 +45,7 @@ var meals = {
         id: 6,
         name: "Pongal",
         image: "./images/pongalnew.jpg",
-        desc: "Very delicious checken briyani at affordable price",
+        desc: "Very delicious ghee pongal",
         like: false
 
     },
